@@ -1,0 +1,58 @@
+{
+  "id": "1779051",
+  "name": "my_bilibili",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "3352246",
+      "name": "动态 -线条",
+      "font_class": "dongtai-xiantiao_fuzhi",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "2154052",
+      "name": "Tab_分区（未选中）",
+      "font_class": "fenquweixuanzhong",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "8714755",
+      "name": "会员购激活@2x",
+      "font_class": "huiyuangoujihuox",
+      "unicode": "e652",
+      "unicode_decimal": 58962
+    },
+    {
+      "icon_id": "8714756",
+      "name": "会员购@2x",
+      "font_class": "huiyuangoux",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    },
+    {
+      "icon_id": "12967249",
+      "name": "bilibili-line",
+      "font_class": "bilibili-line-copy-copy-copy",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "13388793",
+      "name": "首页 (1)",
+      "font_class": "shouye",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "10899655",
+      "name": "频道激活@2x",
+      "font_class": "pindaojihuox",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    }
+  ]
+}
