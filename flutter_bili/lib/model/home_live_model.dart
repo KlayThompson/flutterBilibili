@@ -263,11 +263,18 @@ class BannerSourceContent {
 
 class Room {
   List<RoomList> list;
+  HourRankModuleInfo moduleInfo;
+
   Room(
-      {this.list,});
+      {
+        this.list,
+        this.moduleInfo
+      });
 
   Room.fromJson(Map<String, dynamic> json) {
-
+    moduleInfo = json['module_info'] != null
+        ? new HourRankModuleInfo.fromJson(json['module_info'])
+        : null;
     if (json['list'] != null) {
       list = new List<RoomList>();
       json['list'].forEach((v) {
@@ -278,6 +285,9 @@ class Room {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.moduleInfo != null) {
+      data['module_info'] = this.moduleInfo.toJson();
+    }
     if (this.list != null) {
       data['list'] = this.list.map((v) => v.toJson()).toList();
     }

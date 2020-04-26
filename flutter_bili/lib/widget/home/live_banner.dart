@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bili/model/home_live_model.dart';
 import 'package:flutter_bili/routes/routes.dart';
@@ -23,9 +24,14 @@ class LiveBannerWidget extends StatelessWidget {
         itemBuilder: (context, index) {
           return ClipRRect(
             borderRadius: BorderRadius.circular(5),
-            child: Image.network(
-              this.list[index].pic,
+            child: CachedNetworkImage(
+              imageUrl: this.list[index].pic,
               fit: BoxFit.cover,
+              placeholder: (context, url) => Container(
+                width: ScreenUtil().setWidth(345),
+                height: ScreenUtil().setHeight(120),
+                color: Colors.transparent,
+              ),
             ),
           );
         },

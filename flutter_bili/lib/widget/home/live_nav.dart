@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bili/model/home_live_model.dart';
 import 'package:flutter_bili/routes/routes.dart';
@@ -32,7 +33,15 @@ class LiveNavWidget extends StatelessWidget {
         height: ScreenUtil().setHeight(100),
         child: Column(
           children: <Widget>[
-            Image.network(item.pic,width: ScreenUtil().setWidth(45),),
+            CachedNetworkImage(
+              imageUrl: item.pic,
+              width: ScreenUtil().setWidth(45),
+              placeholder: (context, url) => Container(
+                width: ScreenUtil().setWidth(45),
+                height: ScreenUtil().setWidth(45),
+                color: Colors.transparent,
+              ),
+            ),
             Text(
               item.title,
               maxLines: 1,
