@@ -10,7 +10,8 @@ class LiveNavWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(200),
+      height: ScreenUtil().setHeight(158),
+//      color: Colors.pink,
       child: GridView.count(
         physics: NeverScrollableScrollPhysics(),
         crossAxisCount: 5,

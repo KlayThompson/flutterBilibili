@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bili/widget/home/activity_card.dart';
 import 'package:flutter_bili/widget/home/live_banner.dart';
 import 'package:flutter_bili/widget/home/live_nav.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +22,7 @@ class LivePage extends StatelessWidget {
                       children: <Widget>[
                         LiveBannerWidget(provider.homeLiveInfoModel.data.banner[0].list),
                         LiveNavWidget(list: provider.homeLiveInfoModel.data.areaEntranceV2[0].list,),
+                        ActivityCardWidget(provider.homeLiveInfoModel.data.activityCardV2[0].list),
                       ],
                     ),
                   );
