@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bili/model/app_config_model.dart';
+import 'package:flutter_bili/pages/home/channel_common_page.dart';
+import 'package:flutter_bili/pages/home/home_live_page.dart';
 import 'package:flutter_bili/pages/tabbar/appbar_leading.dart';
 import 'package:flutter_bili/provider/home_common_provider.dart';
 import 'package:provider/provider.dart';
@@ -52,32 +54,7 @@ class _HomePageState extends State<HomePage>
             indicatorColor: Colors.pink[300],
           ),
         ),
-        body: TabBarView(controller: _tabController, children: [
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('Home'),
-          ),
-          Center(
-            child: Text('Home'),
-          ),
-        ])
+        body: TabBarView(controller: _tabController, children: _getTabBarViewChildren())
     );
   }
 
@@ -86,6 +63,13 @@ class _HomePageState extends State<HomePage>
       return Tab(
         text: val.name,
       );
+    }).toList();
+  }
+
+  List<Widget> _getTabBarViewChildren() {
+    List<HomeChannelTabModel> tabList = widget.appConfigModel.data.tab;
+    return tabList.map((val) {
+      return ChannelCommonPage(val.uri);
     }).toList();
   }
 }

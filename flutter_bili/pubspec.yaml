@@ -28,6 +28,8 @@ dependencies:
   fluro: ^1.6.3
   dio: ^3.0.9
   cached_network_image: ^2.1.0+1
+  flutter_swiper: ^1.1.6
+  flutter_easyrefresh: ^2.1.1
 
 dev_dependencies:
   flutter_test:
