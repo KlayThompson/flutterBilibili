@@ -24,6 +24,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   provider: ^4.0.5
+  flutter_screenutil: ^1.1.0
+  fluro: ^1.6.3
+  dio: ^3.0.9
+  cached_network_image: ^2.1.0+1
 
 dev_dependencies:
   flutter_test:

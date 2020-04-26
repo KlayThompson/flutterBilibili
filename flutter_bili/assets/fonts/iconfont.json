@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "203830",
+      "name": "game",
+      "font_class": "game",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "2992142",
+      "name": "mail",
+      "font_class": "mail",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "3318845",
+      "name": "search-sm",
+      "font_class": "search3",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
       "icon_id": "3352246",
       "name": "动态 -线条",
       "font_class": "dongtai-xiantiao_fuzhi",
