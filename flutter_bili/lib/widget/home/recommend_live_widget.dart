@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,7 @@ class RecommendLiveWidget extends StatelessWidget {
 
   Widget _roomGridWidget(BuildContext context) {
     return Container(
-      height: ScreenUtil().setHeight(490),
+      height: ScreenUtil().setHeight(82)*room.list.length,
       padding: EdgeInsets.only(left: 10,right: 10),
 //      color: Colors.pink,
       child: GridView.builder(
@@ -68,7 +70,7 @@ class RecommendLiveWidget extends StatelessWidget {
   Widget _cellCoverImage(RoomList item) {
     return Container(
       width: ScreenUtil().setWidth(172.5),
-      height: ScreenUtil().setHeight(108),
+      height: ScreenUtil().setHeight(100),
 //      color: Colors.pink,
       child: Stack(
         children: <Widget>[
@@ -158,9 +160,10 @@ class RecommendLiveWidget extends StatelessWidget {
     );
   }
 
-  // cover image 右上角tag标签
+  // cover image 左上角tag标签
   Widget _coverImageTopLeftTagImage(List<PendentList> pendentList) {
     if (pendentList.length != 0) {
+      print('有数据${pendentList.length}');
       bool isLeft = false;
       PendentList model;
       pendentList.forEach((item) {
@@ -170,18 +173,24 @@ class RecommendLiveWidget extends StatelessWidget {
         }
       });
       if (isLeft) {
-
         return Container(
           width: ScreenUtil().setWidth(83),
-//          height: ScreenUtil().setHeight(18),
+          height: ScreenUtil().setHeight(18),
           child: Stack(
             children: <Widget>[
-              Image.network(model.pic),
               Positioned(
-                left: 35,
-                bottom: 5,
-                child: Text(model.content,style: TextStyle(fontSize: ScreenUtil().setSp(11),color: Colors.white),),
-              )
+                left: 0,right: 0,top: 0,bottom: 0,
+                  child: Image.network(model.pic,fit: BoxFit.cover,)
+              ),
+//              Positioned(
+//                left: 35,
+//                bottom: 5,
+//                child: ,
+//              )
+            Align(
+              alignment: Alignment.centerRight,
+              child: Padding(padding: EdgeInsets.only(right: 10),child: Text(model.content,style: TextStyle(fontSize: ScreenUtil().setSp(10),color: Colors.white),),),
+            )
             ],
           ),
         );
@@ -195,6 +204,7 @@ class RecommendLiveWidget extends StatelessWidget {
     }
   }
 
+  // cover image 右上角tag标签
   Widget _coverImageTopRightTagImage(List<PendentList> pendentList) {
     if (pendentList.length != 0) {
       bool isRight = false;
@@ -249,6 +259,7 @@ class RecommendLiveWidget extends StatelessWidget {
 
   //推荐直播
   Widget _titleWidget() {
+    bool isFirst = room.moduleInfo.title == '推荐直播';
     return Container(
       height: ScreenUtil().setHeight(40),
       padding: EdgeInsets.only(top: 10),
@@ -266,8 +277,8 @@ class RecommendLiveWidget extends StatelessWidget {
               onTap: () {},
               child: Row(
                 children: <Widget>[
-                  Text('换一换',style: TextStyle(fontSize: ScreenUtil().setSp(12),color: Colors.black38),),
-                  Icon(Icons.refresh,color: Colors.black38,size: 14,)
+                  Text(isFirst ? '换一换' : '查看更多',style: TextStyle(fontSize: ScreenUtil().setSp(12),color: Colors.black38),),
+                  Icon(isFirst ? Icons.refresh : CupertinoIcons.forward,color: Colors.black38,size: 14,)
                 ],
               ),
             ),
@@ -278,16 +289,53 @@ class RecommendLiveWidget extends StatelessWidget {
   }
 
   Widget _bottomMoreRoom() {
+    bool isFirst = room.moduleInfo.title == '推荐直播';
+    bool isLast = room.moduleInfo.title == '绘画';
+    if (isFirst) {
+      return _moreRecommendLive();
+    } else if (isLast) {
+      return _moreLive();
+    } else {
+      return Container();
+    }
+  }
+
+  Widget _moreRecommendLive() {
     return Container(
       height: ScreenUtil().setHeight(40),
       child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('更多${room.moduleInfo.count}个推荐直播',style: TextStyle(fontSize: ScreenUtil().setSp(13),color: Colors.pink[300]),),
-            Icon(CupertinoIcons.forward,color: Colors.pink[300],size: 16,)
-          ],
-        )
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('更多${room.moduleInfo.count}个推荐直播',style: TextStyle(fontSize: ScreenUtil().setSp(13),color: Colors.pink[300]),),
+              Icon(CupertinoIcons.forward,color: Colors.pink[300],size: 16,)
+            ],
+          )
+      ),
+    );
+  }
+
+  Widget _moreLive() {
+    return Container(
+      color: Color(0xffF3F4F5),
+      width: ScreenUtil().setWidth(375),
+      height: ScreenUtil().setHeight(80),
+      child: Stack(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              width: ScreenUtil().setWidth(100),
+              height: ScreenUtil().setHeight(22),
+              decoration: BoxDecoration(
+                  border: Border.all(width: 0.5,color: Colors.black26),
+                  borderRadius: BorderRadius.circular(5),
+//                  color: Colors.deepPurple
+              ),
+              child: Padding(padding: EdgeInsets.only(top: 2),child: Text('全部直播',textAlign: TextAlign.center,style: TextStyle(color: Colors.black54,fontSize: ScreenUtil().setSp(12)),),),
+            ),
+          )
+        ],
       ),
     );
   }

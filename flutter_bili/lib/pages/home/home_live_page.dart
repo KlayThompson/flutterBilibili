@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bili/widget/first_loading.dart';
 import 'package:flutter_bili/widget/home/activity_card.dart';
+import 'package:flutter_bili/widget/home/hour_rank_widget.dart';
 import 'package:flutter_bili/widget/home/live_banner.dart';
 import 'package:flutter_bili/widget/home/live_nav.dart';
 import 'package:flutter_bili/widget/home/recommend_live_widget.dart';
@@ -24,14 +26,23 @@ class LivePage extends StatelessWidget {
                         LiveBannerWidget(provider.homeLiveInfoModel.data.banner[0].list),
                         LiveNavWidget(list: provider.homeLiveInfoModel.data.areaEntranceV2[0].list,),
                         ActivityCardWidget(provider.homeLiveInfoModel.data.activityCardV2[0].list),
-                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[0])
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[0]),
+                        HourRankWidget(provider.homeLiveInfoModel.data.hourRank[0]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[1]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[2]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[3]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[4]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[5]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[6]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[7]),
+                        RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[8]),
                       ],
                     ),
                   );
                 }
             );
           } else {
-            return CircularProgressIndicator();
+            return FirstLoadingWidget();
           }
         }
     );

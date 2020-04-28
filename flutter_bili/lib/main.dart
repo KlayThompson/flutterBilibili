@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bili/pages/index.dart';
 import 'package:flutter_bili/provider/home_common_provider.dart';
 import 'package:flutter_bili/provider/live_provider.dart';
+import 'package:flutter_bili/provider/recommend_provider.dart';
 import 'package:flutter_bili/routes/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -13,10 +14,12 @@ void main() {
 
   var homeCommonProvider = HomeCommonProvider();
   var liveProvider = LiveProvider();
+  var recommendProvider = RecommendProvider();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider.value(value: homeCommonProvider),
       ChangeNotifierProvider.value(value: liveProvider),
+      ChangeNotifierProvider.value(value: recommendProvider),
     ],
     child: MyApp(),
     )

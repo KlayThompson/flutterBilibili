@@ -79,7 +79,7 @@ class ActivityCardWidget extends StatelessWidget {
       onTap: () {},
         child: Container(
           margin: EdgeInsets.only(right: 10),
-          height: ScreenUtil().setHeight(35),
+          height: ScreenUtil().setHeight(30),
           decoration: BoxDecoration(
               color: Colors.pink[300], borderRadius: BorderRadius.circular(4)),
           child: Center(

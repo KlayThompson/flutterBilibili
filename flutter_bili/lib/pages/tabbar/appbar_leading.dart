@@ -42,7 +42,7 @@ class AppBarLeadingWidget extends StatelessWidget {
 
   Widget _titleSearch() {
     return Container(
-      height: 38,
+      height: 34,
       width: ScreenUtil().setWidth(218),
       decoration: BoxDecoration(
           color: Color(0xfff4f4f4),
@@ -51,7 +51,7 @@ class AppBarLeadingWidget extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(vertical: 0),
-            prefixIcon: Icon(IconData(0xe601, fontFamily: "appIconFonts"),size: 16,),
+            prefixIcon: Icon(IconData(0xe601, fontFamily: "appIconFonts"),size: 13,),
             border: OutlineInputBorder(borderSide: BorderSide.none)
         ),
       ),

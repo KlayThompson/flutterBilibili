@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     // TODO: implement initState
+    //设置默认选中tab
     final List<HomeChannelTabModel> _tabs = widget.appConfigModel.data.tab;
     int index = 0;
     for (int i = 0; i < _tabs.length; i++) {
@@ -50,6 +51,7 @@ class _HomePageState extends State<HomePage>
             tabs: _getTabs(widget.appConfigModel.data.tab),
             isScrollable: true,
             labelColor: Colors.pink[300],
+            indicatorSize: TabBarIndicatorSize.label,
             unselectedLabelColor: Color(0xff777777),
             indicatorColor: Colors.pink[300],
           ),
