@@ -10,7 +10,9 @@ class HomeRecommendPage extends StatelessWidget {
       future: _getHomeData(context),
         builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Container(child: Center(child: Text('text'),),);
+          return ListView(
+            children: _getChildWidget(),
+          );
         } else {
           return FirstLoadingWidget();
         }
@@ -21,5 +23,9 @@ class HomeRecommendPage extends StatelessWidget {
   Future _getHomeData(BuildContext context) async{
     await Provider.of<RecommendProvider>(context,listen: false).getHomeRecommendData();
     return 'ok';
+  }
+
+  List<Widget> _getChildWidget() {
+    return [];
   }
 }

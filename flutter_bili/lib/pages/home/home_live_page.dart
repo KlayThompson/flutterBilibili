@@ -25,7 +25,7 @@ class LivePage extends StatelessWidget {
                       children: <Widget>[
                         LiveBannerWidget(provider.homeLiveInfoModel.data.banner[0].list),
                         LiveNavWidget(list: provider.homeLiveInfoModel.data.areaEntranceV2[0].list,),
-                        ActivityCardWidget(provider.homeLiveInfoModel.data.activityCardV2[0].list),
+                        provider.homeLiveInfoModel.data.activityCardV2[0].list == null ? Container() : ActivityCardWidget(provider.homeLiveInfoModel.data.activityCardV2[0].list),
                         RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[0]),
                         HourRankWidget(provider.homeLiveInfoModel.data.hourRank[0]),
                         RecommendLiveWidget(provider.homeLiveInfoModel.data.roomList[1]),
