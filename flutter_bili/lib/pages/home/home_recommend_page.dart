@@ -51,7 +51,11 @@ class HomeRecommendPage extends StatelessWidget {
       }
       //2.small_cover_v2 一行显示两条
       if (val.cardType == 'small_cover_v2' && index < data.items.length - 1) {
-        list.add(RecommendSmallRow(first: val,last: data.items[index+1],));
+        RecommendItem next = data.items[index+1];
+        if (next.cardType != 'small_cover_v2') {
+          next = data.items[index+2];
+        }
+        list.add(RecommendSmallRow(first: val,last: next,));
         skipNext = true;
       }
       //2.large_cover_v5 一行显示一条

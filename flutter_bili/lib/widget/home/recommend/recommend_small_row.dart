@@ -10,7 +10,7 @@ class RecommendSmallRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+//      height: 100,
       width: ScreenUtil().setWidth(375),
       color: Color(0xfff4f4f4),
       margin: EdgeInsets.fromLTRB(10, 5, 10, 0),

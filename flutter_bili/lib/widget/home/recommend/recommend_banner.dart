@@ -11,7 +11,7 @@ class RecommendBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
       width: ScreenUtil().setWidth(375),
       height: ScreenUtil().setHeight(200),
       child: Swiper(
