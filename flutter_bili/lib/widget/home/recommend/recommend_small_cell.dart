@@ -49,7 +49,7 @@ class RecommendSmallCell extends StatelessWidget {
         placeholder: (context, url) => Container(
 //          width: ScreenUtil().setWidth(345),
           height: ScreenUtil().setHeight(120),
-          color: Colors.black12,
+          color: Color(0xffe7e7e7),
           child: Center(
             child: Image.asset('images/image_tv.png',width: 90,),
           ),

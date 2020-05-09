@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bili/pages/home/home_live_page.dart';
+import 'package:flutter_bili/pages/home/home_popular_page.dart';
 import 'package:flutter_bili/pages/home/home_recommend_page.dart';
 
 class ChannelCommonPage extends StatelessWidget {
@@ -19,6 +20,8 @@ class ChannelCommonPage extends StatelessWidget {
       return LivePage();
     } else if (this.uri == 'bilibili://pegasus/promo') {
       return HomeRecommendPage();
+    }  else if (this.uri == 'bilibili://pegasus/hottopic') {
+      return HomePopularPage();
     } else {
       return Center(child: Text('$uri not defined'),);
     }
