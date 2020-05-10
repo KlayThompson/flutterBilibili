@@ -217,7 +217,7 @@ class PopularItem {
   int officialIcon;
   TopRcmdReasonStyle topRcmdReasonStyle;
   Button descButton;
-  List<Item> item;
+  List<ThreeItem> item;
 
   PopularItem(
       {this.cardType,
@@ -288,9 +288,9 @@ class PopularItem {
         ? new Button.fromJson(json['desc_button'])
         : null;
     if (json['item'] != null) {
-      item = new List<Item>();
+      item = new List<ThreeItem>();
       json['item'].forEach((v) {
-        item.add(new Item.fromJson(v));
+        item.add(new ThreeItem.fromJson(v));
       });
     }
   }
@@ -557,7 +557,7 @@ class TopRcmdReasonStyle {
   }
 }
 
-class Item {
+class ThreeItem {
   String title;
   String cover;
   String uri;
@@ -569,7 +569,7 @@ class Item {
   int coverLeftIcon1;
   String coverRightText;
 
-  Item(
+  ThreeItem(
       {this.title,
         this.cover,
         this.uri,
@@ -581,7 +581,7 @@ class Item {
         this.coverLeftIcon1,
         this.coverRightText});
 
-  Item.fromJson(Map<String, dynamic> json) {
+  ThreeItem.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     cover = json['cover'];
     uri = json['uri'];
