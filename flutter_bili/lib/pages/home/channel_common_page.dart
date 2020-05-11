@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bili/pages/home/home_bangumi_page.dart';
 import 'package:flutter_bili/pages/home/home_live_page.dart';
 import 'package:flutter_bili/pages/home/home_popular_page.dart';
 import 'package:flutter_bili/pages/home/home_recommend_page.dart';
@@ -22,6 +23,8 @@ class ChannelCommonPage extends StatelessWidget {
       return HomeRecommendPage();
     }  else if (this.uri == 'bilibili://pegasus/hottopic') {
       return HomePopularPage();
+    }  else if (this.uri == 'bilibili://pgc/home') {
+      return HomeBangumiPage();
     } else {
       return Center(child: Text('$uri not defined'),);
     }

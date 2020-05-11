@@ -22,7 +22,6 @@ class HomeCommonProvider with ChangeNotifier {
     print('获取应用配置信息');
    await requestData(Config.appConfig, 'get').then((res) {
       AppConfigModel model = AppConfigModel.fromJson(res);
-      print(model.message);
       _appConfigModel = model;
       notifyListeners();
     });

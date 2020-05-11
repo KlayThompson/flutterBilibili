@@ -31,7 +31,8 @@ class _HomePageState extends State<HomePage>
         index = i;
       }
     }
-    _tabController = TabController(length: _tabs.length, vsync: this,initialIndex: index);
+    _tabController =
+        TabController(length: _tabs.length, vsync: this, initialIndex: index);
     super.initState();
   }
 

@@ -1,6 +1,8 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bili/model/home_bangumi_model.dart';
 import 'package:flutter_bili/pages/index.dart';
+import 'package:flutter_bili/provider/bangumi_provider.dart';
 import 'package:flutter_bili/provider/home_common_provider.dart';
 import 'package:flutter_bili/provider/live_provider.dart';
 import 'package:flutter_bili/provider/popular_provider.dart';
@@ -17,12 +19,14 @@ void main() {
   var liveProvider = LiveProvider();
   var recommendProvider = RecommendProvider();
   var popularProvider = PopularProvider();
+  var bangumiProvider = BangumiProvider();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider.value(value: homeCommonProvider),
       ChangeNotifierProvider.value(value: liveProvider),
       ChangeNotifierProvider.value(value: recommendProvider),
       ChangeNotifierProvider.value(value: popularProvider),
+      ChangeNotifierProvider.value(value: bangumiProvider)
     ],
     child: MyApp(),
     )

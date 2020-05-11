@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4352669",
+      "name": "换一换",
+      "font_class": "huanyihuan",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "2154211",
+      "name": "追番数_32",
+      "font_class": "zhuifanshu",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
       "icon_id": "5808564",
       "name": "44_点点点",
       "font_class": "dot-1",
