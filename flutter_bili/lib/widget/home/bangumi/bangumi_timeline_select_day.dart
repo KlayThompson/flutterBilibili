@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bili/config.dart';
 import 'package:flutter_bili/provider/bangumi_provider.dart';
 import 'package:provider/provider.dart';
 
 class BangumiTimelineTimeSelect extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int selectDay = Provider.of<BangumiProvider>(context).selectDay == null ? Time.dayOfWeek : Provider.of<BangumiProvider>(context).selectDay;
+    int selectDay = Provider.of<BangumiProvider>(context).selectDay;
+    int today = Provider.of<BangumiProvider>(context).today;
     List<Map> days = [];
-    switch (Time.dayOfWeek) {
+    switch (today) {
       case 1:
         days = [
           {

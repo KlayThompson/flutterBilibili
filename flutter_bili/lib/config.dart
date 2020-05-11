@@ -32,7 +32,3 @@ class Config {
   //新时代
   static String newEra = 'https://app.bilibili.com/x/v2/feed/index/tab?access_key=cf98adceb581c158d863cab60dd31b51&actionKey=appkey&appkey=27eb53fc9058f8c3&build=9340&device=phone&fnval=16&fnver=0&fourk=1&id=38247&mobi_app=iphone&platform=ios&qn=32&sign=63c82d7f98c7ce98f1009670847d3c87&statistics=%7B%22appId%22%3A1%2C%22version%22%3A%225.58.1%22%2C%22abtest%22%3A%22%22%2C%22platform%22%3A1%7D&ts=1588990608';
 }
-
-class Time {
-  static int dayOfWeek = 7;
-}

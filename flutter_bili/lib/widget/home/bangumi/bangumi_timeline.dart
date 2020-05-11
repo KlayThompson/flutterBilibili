@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bili/config.dart';
 import 'package:flutter_bili/model/home_bangumi_model.dart';
 import 'package:flutter_bili/widget/home/bangumi/bangumi_timeline_select_day.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,18 +15,6 @@ class BangumiTimeLine extends StatefulWidget {
 }
 
 class _BangumiTimeLineState extends State<BangumiTimeLine> {
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-        //遍历modules
-    widget.modules.items.forEach((val) {
-      if (val.isToday == 1) {
-        Time.dayOfWeek = val.dayOfWeek;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +39,7 @@ class _BangumiTimeLineState extends State<BangumiTimeLine> {
 
   Widget _gridView(BuildContext context) {
     List<Episodes> episodes = [];
-    int selectDay = Provider.of<BangumiProvider>(context).selectDay == null ? Time.dayOfWeek : Provider.of<BangumiProvider>(context).selectDay;
+    int selectDay = Provider.of<BangumiProvider>(context).selectDay;
     widget.modules.items.forEach((val) {
       if (selectDay == val.dayOfWeek) {
         episodes = val.episodes;
