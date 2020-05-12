@@ -6,6 +6,7 @@ import 'package:flutter_bili/service/request.dart';
 class HomeCommonProvider with ChangeNotifier {
   int _tabIndex = 0;
   AppConfigModel _appConfigModel;// 应用配置信息
+  bool _disposed = false;
 
   int get tabIndex => _tabIndex;
   AppConfigModel get appConfigModel => _appConfigModel;
@@ -25,5 +26,20 @@ class HomeCommonProvider with ChangeNotifier {
       _appConfigModel = model;
       notifyListeners();
     });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _disposed = true;
+  }
+
+  @override
+  void notifyListeners() {
+    // TODO: implement notifyListeners
+    if (!_disposed) {
+      super.notifyListeners();
+    }
   }
 }

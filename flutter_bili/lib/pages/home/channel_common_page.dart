@@ -8,7 +8,8 @@ import 'package:flutter_bili/pages/home/home_recommend_page.dart';
 class ChannelCommonPage extends StatelessWidget {
 
   final String uri;
-  ChannelCommonPage(this.uri);
+  final int channelId;
+  ChannelCommonPage({this.uri,this.channelId});
 
   @override
   Widget build(BuildContext context) {

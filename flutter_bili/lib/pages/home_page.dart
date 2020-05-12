@@ -2,10 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bili/model/app_config_model.dart';
 import 'package:flutter_bili/pages/home/channel_common_page.dart';
-import 'package:flutter_bili/pages/home/home_live_page.dart';
 import 'package:flutter_bili/pages/tabbar/appbar_leading.dart';
-import 'package:flutter_bili/provider/home_common_provider.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_bili/widget/home/top_tab_actions.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +13,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _tabController;
 
   @override
@@ -55,6 +52,9 @@ class _HomePageState extends State<HomePage>
             indicatorSize: TabBarIndicatorSize.label,
             unselectedLabelColor: Color(0xff777777),
             indicatorColor: Colors.pink[300],
+            onTap: (index) {
+              print(index);
+            },
           ),
         ),
         body: TabBarView(controller: _tabController, children: _getTabBarViewChildren())
@@ -72,7 +72,11 @@ class _HomePageState extends State<HomePage>
   List<Widget> _getTabBarViewChildren() {
     List<HomeChannelTabModel> tabList = widget.appConfigModel.data.tab;
     return tabList.map((val) {
-      return ChannelCommonPage(val.uri);
+      return ChannelCommonPage(uri: val.uri,channelId: val.id,);
     }).toList();
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }
