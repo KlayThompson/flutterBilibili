@@ -74,7 +74,7 @@ class BangumiModules {
       items = new List<BangumiModuleItem>();
       json['items'].forEach((v) { items.add(new BangumiModuleItem.fromJson(v)); });
     }
-    moduleId = json['module_id'];
+//    moduleId = json['module_id'];
     report = json['report'] != null ? new Report.fromJson(json['report']) : null;
     size = json['size'];
     style = json['style'];
@@ -93,7 +93,7 @@ class BangumiModules {
     if (this.items != null) {
       data['items'] = this.items.map((v) => v.toJson()).toList();
     }
-    data['module_id'] = this.moduleId;
+//    data['module_id'] = this.moduleId;
     if (this.report != null) {
       data['report'] = this.report.toJson();
     }
@@ -179,7 +179,7 @@ class BangumiModuleItem {
   int dayOfWeek;
   List<Episodes> episodes;
   int isToday;
-  List<Cards> cards;
+  List<BangumiRankCard> cards;
 
   BangumiModuleItem({this.aid, this.badge, this.badgeInfo, this.badgeType, this.cid, this.cover, this.desc, this.episodeId, this.isPreview, this.itemId, this.link, this.oid, this.report, this.seasonId, this.seasonType, this.sourceContent, this.stat, this.title, this.type, this.wid, this.isAuto, this.date, this.dateTs, this.dayOfWeek, this.episodes, this.isToday, this.cards});
 
@@ -214,8 +214,8 @@ class BangumiModuleItem {
     }
     isToday = json['is_today'];
     if (json['cards'] != null) {
-      cards = new List<Cards>();
-      json['cards'].forEach((v) { cards.add(new Cards.fromJson(v)); });
+      cards = new List<BangumiRankCard>();
+      json['cards'].forEach((v) { cards.add(new BangumiRankCard.fromJson(v)); });
     }
   }
 
@@ -666,7 +666,7 @@ class Episodes {
   }
 }
 
-class Cards {
+class BangumiRankCard {
   String badge;
   BadgeInfo badgeInfo;
   int badgeType;
@@ -679,9 +679,9 @@ class Cards {
   String title;
   String type;
 
-  Cards({this.badge, this.badgeInfo, this.badgeType, this.canWatch, this.cover, this.link, this.oid, this.pts, this.seasonType, this.title, this.type});
+  BangumiRankCard({this.badge, this.badgeInfo, this.badgeType, this.canWatch, this.cover, this.link, this.oid, this.pts, this.seasonType, this.title, this.type});
 
-  Cards.fromJson(Map<String, dynamic> json) {
+  BangumiRankCard.fromJson(Map<String, dynamic> json) {
     badge = json['badge'];
     badgeInfo = json['badge_info'] != null ? new BadgeInfo.fromJson(json['badge_info']) : null;
     badgeType = json['badge_type'];

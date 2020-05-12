@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "6991109",
+      "name": "排名",
+      "font_class": "paiming",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "9958518",
+      "name": "排名（银）",
+      "font_class": "paiming1",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
       "icon_id": "4352669",
       "name": "换一换",
       "font_class": "huanyihuan",

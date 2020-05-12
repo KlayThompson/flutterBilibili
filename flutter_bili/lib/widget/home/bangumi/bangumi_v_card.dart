@@ -1,51 +1,46 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bili/model/home_bangumi_model.dart';
-import 'package:flutter_bili/widget/home/bangumi/bangumi_like_buttton.dart';
-import 'package:flutter_bili/widget/home/bangumi/bangumi_top_header_title.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
-class BangumiCardWidget extends StatelessWidget {
+import 'bangumi_like_buttton.dart';
+import 'bangumi_top_header_title.dart';
+
+class BangumiVCard extends StatelessWidget {
   BangumiModules modules;
-  BangumiCardWidget(this.modules);
+  BangumiVCard(this.modules);
   @override
   Widget build(BuildContext context) {
     return Container(
       width: ScreenUtil().setWidth(375),
       decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(width: 0.5,color: Colors.black12)
-        )
+          border: Border(
+            bottom: BorderSide(width: 0.5,color: Colors.black12),
+          )
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          BangumiTopHeaderTitleWidget(title: modules.title,hideRight: false,),
-          _gridView(),
+          BangumiTopHeaderTitleWidget(title: modules.title),
+          Container(
+            width: ScreenUtil().setWidth(375),
+            padding: EdgeInsets.fromLTRB(13, 0, 13, 0),
+            child: GridView.count(
+              crossAxisCount: 3,
+              crossAxisSpacing: 10,
+              shrinkWrap: true,
+              childAspectRatio: 0.47,
+              physics: NeverScrollableScrollPhysics(),
+              children: modules.items.map((val) {
+                return _singleCell(val);
+              }).toList(),
+            ),
+          ),
           _bottomWidget()
         ],
       ),
     );
   }
 
-  //内容列表
-  Widget _gridView() {
-    return Container(
-      width: ScreenUtil().setWidth(375),
-//      height: ScreenUtil().setHeight(350),
-      padding: EdgeInsets.only(left: 10,right: 10),
-      child: GridView.count(
-          crossAxisCount: 2,
-        crossAxisSpacing: 10,
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        children: modules.items.map((val) {
-          return _singleCell(val);
-        }).toList(),
-      ),
-    );
-  }
   //cell
   Widget _singleCell(BangumiModuleItem item) {
     return Container(
@@ -56,11 +51,11 @@ class BangumiCardWidget extends StatelessWidget {
           _coverImage(item),
           Padding(
             padding: EdgeInsets.only(top: 5),
-            child: Text(item.title,style: TextStyle(fontSize: ScreenUtil().setSp(14),color: Color(0xff444444)),maxLines: 1,overflow: TextOverflow.ellipsis,),
+            child: Text(item.title,style: TextStyle(fontSize: ScreenUtil().setSp(14),color: Color(0xff444444)),maxLines: 2,overflow: TextOverflow.ellipsis,),
           ),
           Padding(
             padding: EdgeInsets.only(top: 0),
-            child: Text(item.desc ?? '',style: TextStyle(color: Color(0xff888888),fontSize: ScreenUtil().setSp(12)),maxLines: 1,overflow: TextOverflow.ellipsis),
+            child: Text(item.desc,style: TextStyle(color: Color(0xff888888),fontSize: ScreenUtil().setSp(12)),maxLines: 1,overflow: TextOverflow.ellipsis),
           )
         ],
       ),
@@ -69,8 +64,8 @@ class BangumiCardWidget extends StatelessWidget {
   //封面图570x353
   Widget _coverImage(BangumiModuleItem item) {
     return Container(
-      width: ScreenUtil().setWidth(190),
-      height: ScreenUtil().setHeight(115),
+      width: ScreenUtil().setWidth(125),
+      height: ScreenUtil().setHeight(165),
       child: Stack(
         children: <Widget>[
           Positioned(
@@ -82,23 +77,22 @@ class BangumiCardWidget extends StatelessWidget {
                 child: CachedNetworkImage(
                   imageUrl: item.cover,
                   fit: BoxFit.cover,
-                  width: ScreenUtil().setWidth(190),
-                  height: ScreenUtil().setHeight(115),
+                  width: ScreenUtil().setWidth(125),
+                  height: ScreenUtil().setHeight(165),
                   placeholder: (context, url) => Container(
-                      width: ScreenUtil().setWidth(190),
-                      height: ScreenUtil().setHeight(115),
+                      width: ScreenUtil().setWidth(125),
+                      height: ScreenUtil().setHeight(165),
                       color: Color(0xffe7e7e7),
                       child: Center(
-                        child: Image.asset('images/image_tv.png',width: 90,),
+                        child: Image.asset('images/image_tv.png',width: 60,),
                       )
                   ),
                 ),
               ),
             ),
           ),
-          item.stat == null ? Container() :
           Positioned(
-            left: 0,bottom: 0,
+            left: 0,bottom: 0,right: 0,
             child: Container(
               padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
               decoration: BoxDecoration(
@@ -109,26 +103,26 @@ class BangumiCardWidget extends StatelessWidget {
                   ),
                   borderRadius: BorderRadius.only(bottomRight: Radius.circular(5),bottomLeft: Radius.circular(5))
               ),
-              child: Text(item.stat.followView ?? '',style: TextStyle(color: Colors.white,fontSize: 13),),
+              child: Text(item.stat.followView,style: TextStyle(color: Colors.white,fontSize: 13),),
             ),
           ),
           item.badgeInfo == null ? Container() :
-              Positioned(
-                top: 3,
-                right: 3,
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(3, 1, 3, 1),
-                  decoration: BoxDecoration(
-                      color: Colors.pink[300],
-                      borderRadius: BorderRadius.circular(5)
-                  ),
-                  child: Text(item.badgeInfo.text,style: TextStyle(color: Colors.white,fontSize: 11),),
-                ),
-              ),
           Positioned(
+            top: 3,
+            right: 3,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(3, 1, 3, 1),
+              decoration: BoxDecoration(
+                  color: Colors.pink[300],
+                  borderRadius: BorderRadius.circular(5)
+              ),
+              child: Text(item.badgeInfo.text,style: TextStyle(color: Colors.white,fontSize: 11),),
+            ),
+          ),
+          modules.type == 2 ? Positioned(
             left: 0,top: 0,
             child: BangumiLikeButtonWidget(item.oid),
-          )
+          ) : Container()
         ],
       ),
     );
