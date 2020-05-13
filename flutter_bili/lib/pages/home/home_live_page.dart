@@ -9,11 +9,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bili/provider/live_provider.dart';
 
-class LivePage extends StatelessWidget {
+class LivePage extends StatefulWidget {
+  @override
+  _LivePageState createState() => _LivePageState();
+}
+
+class _LivePageState extends State<LivePage> with AutomaticKeepAliveClientMixin {
+  var _futureBuilderFuture;
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ///用_futureBuilderFuture来保存_gerData()的结果，以避免不必要的ui重绘
+    _futureBuilderFuture = _getLiveAllList(context);
+  }
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
-      future: _getLiveAllList(context),
+        future: _futureBuilderFuture,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Consumer<LiveProvider>(
@@ -52,4 +68,8 @@ class LivePage extends StatelessWidget {
     await Provider.of<LiveProvider>(context,listen: false).getHomeLiveAllList();
     return 'ok';
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

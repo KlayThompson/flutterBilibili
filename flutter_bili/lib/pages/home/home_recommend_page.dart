@@ -6,22 +6,37 @@ import 'package:flutter_bili/widget/home/recommend/recommend_banner.dart';
 import 'package:flutter_bili/widget/home/recommend/recommend_small_row.dart';
 import 'package:provider/provider.dart';
 
-class HomeRecommendPage extends StatelessWidget {
+
+class HomeRecommendPage extends StatefulWidget {
+  @override
+  _HomeRecommendPageState createState() => _HomeRecommendPageState();
+}
+
+class _HomeRecommendPageState extends State<HomeRecommendPage> with AutomaticKeepAliveClientMixin {
+  var _futureBuilderFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _futureBuilderFuture = _getHomeData(context);
+  }
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
-        future: _getHomeData(context),
+        future: _futureBuilderFuture,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Consumer<RecommendProvider>(
                 builder: (context, provider, child) {
-              return Container(
-                color: Color(0xfff4f4f4),
-                child: ListView(
-                  children: _getChildWidget(provider.homeRecommendModel.data),
-                ),
-              );
-            });
+                  return Container(
+                    color: Color(0xfff4f4f4),
+                    child: ListView(
+                      children: _getChildWidget(provider.homeRecommendModel.data),
+                    ),
+                  );
+                });
           } else {
             return FirstLoadingWidget();
           }
@@ -65,4 +80,8 @@ class HomeRecommendPage extends StatelessWidget {
     }
     return list;
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

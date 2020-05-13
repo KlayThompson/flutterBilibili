@@ -13,11 +13,26 @@ import 'package:flutter_bili/widget/home/bangumi/bangumi_topic.dart';
 import 'package:flutter_bili/widget/home/bangumi/bangumi_v_card.dart';
 import 'package:provider/provider.dart';
 
-class HomeCinemaPage extends StatelessWidget {
+class HomeCinemaPage extends StatefulWidget {
+  @override
+  _HomeCinemaPageState createState() => _HomeCinemaPageState();
+}
+
+class _HomeCinemaPageState extends State<HomeCinemaPage> with AutomaticKeepAliveClientMixin {
+
+  var _futureBuilderFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _futureBuilderFuture = _getCinemaDataList(context);
+  }
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
-      future: _getCinemaDataList(context),
+      future: _futureBuilderFuture,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Consumer<BangumiProvider>(
@@ -66,4 +81,8 @@ class HomeCinemaPage extends StatelessWidget {
     await Provider.of<BangumiProvider>(context,listen: false).getCinemaData();
     return 'ok';
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

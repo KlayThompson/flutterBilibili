@@ -7,22 +7,37 @@ import 'package:flutter_bili/widget/home/popular/popular_top_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bili/provider/popular_provider.dart';
 
-class HomePopularPage extends StatelessWidget {
+class HomePopularPage extends StatefulWidget {
+  @override
+  _HomePopularPageState createState() => _HomePopularPageState();
+}
+
+class _HomePopularPageState extends State<HomePopularPage> with AutomaticKeepAliveClientMixin {
+
+  var _futureBuilderFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _futureBuilderFuture = _getPopularListData(context);
+  }
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
-      future: _getPopularListData(context),
+      future: _futureBuilderFuture,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Consumer<PopularProvider>(
-            builder: (context,provider,child) {
-              return Container(
-                color: Colors.white,
-                child: ListView(
-                  children: _popularListWidget(provider.popular),
-                ),
-              );
-            }
+              builder: (context,provider,child) {
+                return Container(
+                  color: Colors.white,
+                  child: ListView(
+                    children: _popularListWidget(provider.popular),
+                  ),
+                );
+              }
           );
         } else {
           return FirstLoadingWidget();
@@ -48,4 +63,8 @@ class HomePopularPage extends StatelessWidget {
     await Provider.of<PopularProvider>(context,listen: false).getHomePopularListData();
     return 'ok';
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

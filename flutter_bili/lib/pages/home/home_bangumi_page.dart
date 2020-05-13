@@ -11,11 +11,25 @@ import 'package:flutter_bili/widget/home/bangumi/bangumi_v_card.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_bili/provider/bangumi_provider.dart';
 
-class HomeBangumiPage extends StatelessWidget {
+class HomeBangumiPage extends StatefulWidget {
+  @override
+  _HomeBangumiPageState createState() => _HomeBangumiPageState();
+}
+
+class _HomeBangumiPageState extends State<HomeBangumiPage> with AutomaticKeepAliveClientMixin {
+  var _futureBuilderFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _futureBuilderFuture = _getBangumiDataList(context);
+  }
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
-      future: _getBangumiDataList(context),
+      future: _futureBuilderFuture,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Consumer<BangumiProvider>(
@@ -60,4 +74,8 @@ class HomeBangumiPage extends StatelessWidget {
     await Provider.of<BangumiProvider>(context,listen: false).getBangumiData();
     return 'ok';
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

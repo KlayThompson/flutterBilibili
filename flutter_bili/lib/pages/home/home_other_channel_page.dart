@@ -7,14 +7,29 @@ import 'package:flutter_bili/widget/home/other_channel/other_multi_item.dart';
 import 'package:flutter_bili/widget/home/other_channel/other_nav.dart';
 import 'package:provider/provider.dart';
 
-class HomeOtherChannelPage extends StatelessWidget {
+class HomeOtherChannelPage extends StatefulWidget {
   final int channelId;
   HomeOtherChannelPage(this.channelId);
 
   @override
+  _HomeOtherChannelPageState createState() => _HomeOtherChannelPageState();
+}
+
+class _HomeOtherChannelPageState extends State<HomeOtherChannelPage> with AutomaticKeepAliveClientMixin{
+
+  var _futureBuilderFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _futureBuilderFuture = _getBangumiDataList(context);
+  }
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return FutureBuilder(
-      future: _getBangumiDataList(context),
+      future: _futureBuilderFuture,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return Consumer<HomeCommonChannelProvider>(
@@ -48,7 +63,11 @@ class HomeOtherChannelPage extends StatelessWidget {
   }
 
   Future _getBangumiDataList(BuildContext context) async {
-    await Provider.of<HomeCommonChannelProvider>(context,listen: false).getHomeCommonChannelListData(channelId);
+    await Provider.of<HomeCommonChannelProvider>(context,listen: false).getHomeCommonChannelListData(widget.channelId);
     return 'ok';
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

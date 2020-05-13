@@ -15,6 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   TabController _tabController;
+  List<Widget> _tabbarViewChildren = [];
 
   @override
   void initState() {
@@ -30,11 +31,14 @@ class _HomePageState extends State<HomePage>
     }
     _tabController =
         TabController(length: _tabs.length, vsync: this, initialIndex: index);
+
+    _tabbarViewChildren = _getTabBarViewChildren();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -57,7 +61,7 @@ class _HomePageState extends State<HomePage>
             },
           ),
         ),
-        body: TabBarView(controller: _tabController, children: _getTabBarViewChildren())
+        body: TabBarView(controller: _tabController, children: _tabbarViewChildren)
     );
   }
 
