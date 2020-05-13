@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bili/pages/home/home_bangumi_page.dart';
 import 'package:flutter_bili/pages/home/home_cinema_page.dart';
 import 'package:flutter_bili/pages/home/home_live_page.dart';
+import 'package:flutter_bili/pages/home/home_other_channel_page.dart';
 import 'package:flutter_bili/pages/home/home_popular_page.dart';
 import 'package:flutter_bili/pages/home/home_recommend_page.dart';
 
@@ -30,7 +31,7 @@ class ChannelCommonPage extends StatelessWidget {
     }  else if (this.uri == 'bilibili://pgc/cinema-tab') {
       return HomeCinemaPage();
     } else {
-      return Center(child: Text('$uri not defined'),);
+      return HomeOtherChannelPage(channelId);
     }
   }
 }

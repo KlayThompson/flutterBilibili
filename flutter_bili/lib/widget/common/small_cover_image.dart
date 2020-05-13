@@ -60,31 +60,25 @@ class SmallCoverImageWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Expanded(
-              flex: 2,
-              child:Container(
-                height: ScreenUtil().setHeight(33),
-                padding: EdgeInsets.only(bottom: 5),
+          Container(
+            height: ScreenUtil().setHeight(33),
+            padding: EdgeInsets.only(bottom: 5),
 //                color: Colors.pink,
-                child:  Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  verticalDirection: VerticalDirection.up,
-                  children: <Widget>[
-                    _singleMenu(IconData(0xe666, fontFamily: "appIconFonts"), this.coverLeftText1 ?? ''),
-                    SizedBox(width: 8,),
-                    this.coverLeftText2 != null ? _singleMenu(IconData(0xe665, fontFamily: "appIconFonts"), this.coverLeftText2 ?? '') : Container()
-                  ],
-                ),
-              )
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(
-//                color: Colors.pink,
-              padding: EdgeInsets.only(right: 10,bottom: 5),
-              alignment: Alignment.bottomRight,
-              child: Text(this.coverRightText ?? '',style: TextStyle(fontSize: 11,color: Colors.white),),
+            child:  Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              verticalDirection: VerticalDirection.up,
+              children: <Widget>[
+                _singleMenu(IconData(0xe666, fontFamily: "appIconFonts"), this.coverLeftText1 ?? ''),
+                SizedBox(width: 8,),
+                this.coverLeftText2 != null ? _singleMenu(IconData(0xe665, fontFamily: "appIconFonts"), this.coverLeftText2 ?? '') : Container()
+              ],
             ),
+          ),
+          Container(
+//                color: Colors.pink,
+            padding: EdgeInsets.only(right: 10,bottom: 5),
+            alignment: Alignment.bottomRight,
+            child: Text(this.coverRightText ?? '',style: TextStyle(fontSize: 11,color: Colors.white),),
           )
         ],
       ),
@@ -97,7 +91,7 @@ class SmallCoverImageWidget extends StatelessWidget {
         children: <Widget>[
           Icon(icon,size: 15,color: Colors.white,),
           SizedBox(width: 5,),
-          Text(value,style: TextStyle(fontSize: 11,color: Colors.white),overflow: TextOverflow.ellipsis,maxLines: 1,textAlign: TextAlign.end,),
+          Text(value,style: TextStyle(fontSize: 11,color: Colors.white),overflow: TextOverflow.ellipsis,maxLines: 1,textAlign: TextAlign.start,),
         ],
       ),
     );

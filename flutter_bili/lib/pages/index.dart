@@ -10,7 +10,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class IndexPage extends StatelessWidget {
+
+class IndexPage extends StatefulWidget {
+  @override
+  _IndexPageState createState() => _IndexPageState();
+}
+
+class _IndexPageState extends State<IndexPage> {
+
+  var _futureBuilderFuture;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ///用_futureBuilderFuture来保存_gerData()的结果，以避免不必要的ui重绘
+    _futureBuilderFuture = _getAppConfig(context);
+  }
+
+
   final List<BottomNavigationBarItem> items = [
     BottomNavigationBarItem(
         icon: Icon(IconData(0xe60e, fontFamily: "appIconFonts")),
@@ -35,7 +53,7 @@ class IndexPage extends StatelessWidget {
   Widget build(BuildContext context) {
     ScreenUtil.init(context, width: 375, height: 667);
     return FutureBuilder(
-        future: _getAppConfig(context),
+        future: _futureBuilderFuture,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return Consumer<HomeCommonProvider>(builder: (context, pro, child) {

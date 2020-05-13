@@ -43,6 +43,7 @@ class PopularLargeCoverV1 extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               child: CachedNetworkImage(
                 imageUrl: item.cover,
+                fit: BoxFit.cover,
                 placeholder: (context, url) => Container(
                   width: ScreenUtil().setWidth(152),
                   height: ScreenUtil().setHeight(95),
