@@ -98,8 +98,9 @@ class BangumiCardWidget extends StatelessWidget {
           ),
           item.stat == null ? Container() :
           Positioned(
-            left: 0,bottom: 0,
+            left: 0,bottom: 0,right: 0,
             child: Container(
+              alignment: Alignment.topLeft,
               padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
               decoration: BoxDecoration(
                   gradient: LinearGradient(

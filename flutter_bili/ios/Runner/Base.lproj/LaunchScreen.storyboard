@@ -19,30 +19,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="YRO-k0-Ey4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="0YR-eo-RIt">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="41y-hl-V2D">
+                                <rect key="frame" x="47" y="64" width="320" height="608"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launcher_default_2020" translatesAutoresizingMaskIntoConstraints="NO" id="vtn-De-gYH">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="520"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="vtn-De-gYH" secondAttribute="height" multiplier="8:13" id="wHJ-Ac-FUs"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launcher_copyright_2020" translatesAutoresizingMaskIntoConstraints="NO" id="WOM-wZ-eOD">
+                                        <rect key="frame" x="100" y="548" width="120" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="WOM-wZ-eOD" secondAttribute="height" multiplier="2:1" id="dhh-jV-4br"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1a2-6s-vTC"/>
-                            <constraint firstItem="YRO-k0-Ey4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="4X2-HB-R7a"/>
-                            <constraint firstAttribute="trailing" secondItem="0YR-eo-RIt" secondAttribute="trailing" id="NqY-TQ-xdh"/>
-                            <constraint firstItem="0YR-eo-RIt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="OMf-rU-p5k"/>
-                            <constraint firstItem="0YR-eo-RIt" firstAttribute="top" secondItem="Ydg-fD-yQy" secondAttribute="bottom" id="bYP-e4-apH"/>
-                            <constraint firstItem="xbc-2k-c8Z" firstAttribute="top" secondItem="0YR-eo-RIt" secondAttribute="bottom" id="qB8-2I-Ah4"/>
+                            <constraint firstItem="41y-hl-V2D" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ydg-fD-yQy" secondAttribute="bottom" constant="20" id="EAR-a4-YmR"/>
+                            <constraint firstItem="41y-hl-V2D" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="OQO-hG-dyI"/>
+                            <constraint firstItem="41y-hl-V2D" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="dID-RR-XMM"/>
+                            <constraint firstItem="41y-hl-V2D" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dXy-KQ-rI7"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="41y-hl-V2D" secondAttribute="trailing" constant="20" id="eYL-EL-5bW"/>
+                            <constraint firstItem="xbc-2k-c8Z" firstAttribute="top" relation="greaterThanOrEqual" secondItem="41y-hl-V2D" secondAttribute="bottom" constant="20" id="hxN-UE-Rxe"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="76.811594202898561" y="251.11607142857142"/>
+            <point key="canvasLocation" x="76.811594202898561" y="251.08695652173915"/>
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="414" height="736"/>
+        <image name="launcher_copyright_2020" width="120" height="60"/>
+        <image name="launcher_default_2020" width="320" height="520"/>
     </resources>
 </document>

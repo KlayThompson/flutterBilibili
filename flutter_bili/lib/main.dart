@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bili/model/home_bangumi_model.dart';
 import 'package:flutter_bili/pages/index.dart';
 import 'package:flutter_bili/provider/bangumi_provider.dart';
+import 'package:flutter_bili/provider/channel_provider.dart';
 import 'package:flutter_bili/provider/home_common_channel_provider.dart';
 import 'package:flutter_bili/provider/home_common_provider.dart';
 import 'package:flutter_bili/provider/live_provider.dart';
@@ -22,6 +23,7 @@ void main() {
   var popularProvider = PopularProvider();
   var bangumiProvider = BangumiProvider();
   var commonChannelModel = HomeCommonChannelProvider();
+  var channelProvider = ChannelProvider();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider.value(value: homeCommonProvider),
@@ -29,7 +31,8 @@ void main() {
       ChangeNotifierProvider.value(value: recommendProvider),
       ChangeNotifierProvider.value(value: popularProvider),
       ChangeNotifierProvider.value(value: bangumiProvider),
-      ChangeNotifierProvider.value(value: commonChannelModel)
+      ChangeNotifierProvider.value(value: commonChannelModel),
+      ChangeNotifierProvider.value(value: channelProvider),
     ],
     child: MyApp(),
     )
