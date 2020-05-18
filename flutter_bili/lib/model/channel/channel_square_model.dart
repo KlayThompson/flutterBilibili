@@ -1,4 +1,5 @@
 import 'package:flutter_bili/model/common_model.dart';
+import 'package:flutter_bili/model/home_popular_model.dart';
 
 class ChannelSquare {
   int code;
@@ -124,7 +125,7 @@ class ChannelSquareItem {
 class ChannelRcmItems {
   List<CommonSimpleItem> list;
   List<CommonSimpleItem> rcmDynamic;
-  List<CommonSmallCardModel> rcmd;
+  List<SingleChannelRcmdListModel> rcmd;
 
   ChannelRcmItems({this.list, this.rcmDynamic, this.rcmd});
 
@@ -138,8 +139,8 @@ class ChannelRcmItems {
       json['dynamic'].forEach((v) { rcmDynamic.add(new CommonSimpleItem.fromJson(v)); });
     }
     if (json['rcmd'] != null) {
-      rcmd = new List<CommonSmallCardModel>();
-      json['rcmd'].forEach((v) { rcmd.add(new CommonSmallCardModel.fromJson(v)); });
+      rcmd = new List<SingleChannelRcmdListModel>();
+      json['rcmd'].forEach((v) { rcmd.add(new SingleChannelRcmdListModel.fromJson(v)); });
     }
   }
 
@@ -153,6 +154,75 @@ class ChannelRcmItems {
     }
     if (this.rcmd != null) {
       data['rcmd'] = this.rcmd.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class SingleChannelRcmdListModel {
+  String cardType;
+  String cardGoto;
+  String goto;
+  String param;
+  String title;
+  String uri;
+  CommonButton descButton;
+  CommonArgs args;
+  int idx;
+  int id;
+  bool isButton;
+  bool isAtten;
+  CommonButton descButton2;
+  String desc1;
+  List<CommonSmallCardModel> items;
+
+  SingleChannelRcmdListModel({this.cardType, this.cardGoto, this.goto, this.param, this.title, this.uri, this.descButton, this.args, this.idx, this.id, this.isButton, this.isAtten, this.descButton2, this.desc1, this.items});
+
+  SingleChannelRcmdListModel.fromJson(Map<String, dynamic> json) {
+    cardType = json['card_type'];
+    cardGoto = json['card_goto'];
+    goto = json['goto'];
+    param = json['param'];
+    title = json['title'];
+    uri = json['uri'];
+    descButton = json['desc_button'] != null ? new CommonButton.fromJson(json['desc_button']) : null;
+    args = json['args'] != null ? new CommonArgs.fromJson(json['args']) : null;
+    idx = json['idx'];
+    id = json['id'];
+    isButton = json['is_button'];
+    isAtten = json['is_atten'];
+    descButton2 = json['desc_button_2'] != null ? new CommonButton.fromJson(json['desc_button_2']) : null;
+    desc1 = json['desc_1'];
+    if (json['items'] != null) {
+      items = new List<CommonSmallCardModel>();
+      json['items'].forEach((v) { items.add(new CommonSmallCardModel.fromJson(v)); });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['card_type'] = this.cardType;
+    data['card_goto'] = this.cardGoto;
+    data['goto'] = this.goto;
+    data['param'] = this.param;
+    data['title'] = this.title;
+    data['uri'] = this.uri;
+    if (this.descButton != null) {
+      data['desc_button'] = this.descButton.toJson();
+    }
+    if (this.args != null) {
+      data['args'] = this.args.toJson();
+    }
+    data['idx'] = this.idx;
+    data['id'] = this.id;
+    data['is_button'] = this.isButton;
+    data['is_atten'] = this.isAtten;
+    if (this.descButton2 != null) {
+      data['desc_button_2'] = this.descButton2.toJson();
+    }
+    data['desc_1'] = this.desc1;
+    if (this.items != null) {
+      data['items'] = this.items.map((v) => v.toJson()).toList();
     }
     return data;
   }

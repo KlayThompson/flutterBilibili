@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bili/model/channel/channel_square_model.dart';
 import 'package:flutter_bili/provider/channel_provider.dart';
 import 'package:flutter_bili/widget/channel/bottom_line10.dart';
+import 'package:flutter_bili/widget/channel/channel_dynamic_banner.dart';
 import 'package:flutter_bili/widget/channel/channel_hot.dart';
 import 'package:flutter_bili/widget/channel/channel_search.dart';
 import 'package:flutter_bili/widget/channel/channel_subscribe_panel.dart';
+import 'package:flutter_bili/widget/channel/rcmd_channel_list_widget.dart';
 import 'package:flutter_bili/widget/first_loading.dart';
 import 'package:provider/provider.dart';
 
@@ -58,6 +60,12 @@ class _ChannelSquarePageState extends State<ChannelSquarePage> with AutomaticKee
         list.add(BottomLine10());
       } else if (val.modelType == 'rcmd') {
         list.add(ChannelHotWidget(val));
+        if (val.rcmItems.rcmDynamic != null && val.rcmItems.rcmDynamic.length != 0) {
+          list.add(ChannelDynamicBanner(val.rcmItems.rcmDynamic));
+        }
+        if (val.rcmItems.rcmd != null && val.rcmItems.rcmd.length != 0) {
+          list.add(ChannelRcmdListWidget(val.rcmItems.rcmd));
+        }
       }
     });
 
