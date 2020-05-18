@@ -23,7 +23,7 @@ class _ChannelSquarePageState extends State<ChannelSquarePage> with AutomaticKee
   void initState() {
     // TODO: implement initState
     super.initState();
-    _futureBuilderFuture = _getCinemaDataList(context);
+    _futureBuilderFuture = _getChannelRcmdDataList(context);
   }
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class _ChannelSquarePageState extends State<ChannelSquarePage> with AutomaticKee
     return list;
   }
 
-  Future _getCinemaDataList(BuildContext context) async {
+  Future _getChannelRcmdDataList(BuildContext context) async {
     await Provider.of<ChannelProvider>(context,listen: false).getChannelSquareList();
     return 'ok';
   }
