@@ -25,6 +25,7 @@ class _ChannelPageState extends State<ChannelPage> with SingleTickerProviderStat
   }
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,

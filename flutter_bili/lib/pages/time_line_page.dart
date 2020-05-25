@@ -1,13 +1,77 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bili/provider/time_line_provider.dart';
+import 'package:flutter_bili/widget/first_loading.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
-class TimeLinePage extends StatelessWidget {
+class TimeLinePage extends StatefulWidget {
+  @override
+  _TimeLinePageState createState() => _TimeLinePageState();
+}
+
+class _TimeLinePageState extends State<TimeLinePage> with AutomaticKeepAliveClientMixin {
+  var _futureBuilderFuture;
+  final _notLoginImageAsset = 'images/dynamic_login_guide.png';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _futureBuilderFuture = _getTimeLineDataList(context);
+  }
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Scaffold(
         appBar: AppBar(
-          title: Text('appbarTitle'),
+          backgroundColor: Colors.white,
+          titleSpacing: 0,
+          elevation: 0,
+          brightness: Brightness.light,
+          title: Text('动态', style: TextStyle(color: Colors.pink[300], fontSize: 18),),
         ),
-        body: Center(child: Text('TimeLine'),)
-    );;
+        body: FutureBuilder(
+          future: _futureBuilderFuture,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Consumer<TimeLineProvider>(
+                  builder: (context,provider,_) {
+                    return Container(
+                      color: Color(0xfff4f4f4),
+                      child: ListView(
+                        children: _timelineDataListWidget(),
+                      ),
+                    );
+                  }
+              );
+            } else {
+              return FirstLoadingWidget();
+            }
+          },
+        )
+    );
   }
+
+  List<Widget> _timelineDataListWidget() {
+    return [
+      _tipLoginImage()
+    ];
+  }
+
+  Widget _tipLoginImage() {
+    return Container(
+      width: ScreenUtil().setWidth(375),
+      margin: EdgeInsets.only(bottom: 10),
+      child: Image.asset(_notLoginImageAsset),
+    );
+  }
+
+  Future _getTimeLineDataList(BuildContext context) async {
+    await Provider.of<TimeLineProvider>(context,listen: false).getTimeLineListData();
+    return 'ok';
+  }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

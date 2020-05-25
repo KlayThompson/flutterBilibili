@@ -1,6 +1,5 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bili/model/home_bangumi_model.dart';
 import 'package:flutter_bili/pages/index.dart';
 import 'package:flutter_bili/provider/bangumi_provider.dart';
 import 'package:flutter_bili/provider/channel_provider.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_bili/provider/home_common_provider.dart';
 import 'package:flutter_bili/provider/live_provider.dart';
 import 'package:flutter_bili/provider/popular_provider.dart';
 import 'package:flutter_bili/provider/recommend_provider.dart';
+import 'package:flutter_bili/provider/time_line_provider.dart';
 import 'package:flutter_bili/routes/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -24,6 +24,7 @@ void main() {
   var bangumiProvider = BangumiProvider();
   var commonChannelModel = HomeCommonChannelProvider();
   var channelProvider = ChannelProvider();
+  var timeLineProvider = TimeLineProvider();
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider.value(value: homeCommonProvider),
@@ -33,6 +34,7 @@ void main() {
       ChangeNotifierProvider.value(value: bangumiProvider),
       ChangeNotifierProvider.value(value: commonChannelModel),
       ChangeNotifierProvider.value(value: channelProvider),
+      ChangeNotifierProvider.value(value: timeLineProvider)
     ],
     child: MyApp(),
     )

@@ -52,6 +52,7 @@ flutter:
   assets:
     - images/ic_loading.png
     - images/image_tv.png
+    - images/dynamic_login_guide.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

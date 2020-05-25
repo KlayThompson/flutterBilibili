@@ -194,3 +194,25 @@ class CommonSimpleItem {
     return data;
   }
 }
+
+class CommonRelationModel {
+  int status;
+  int isFollow;
+  int isFollowed;
+
+  CommonRelationModel({this.status, this.isFollow, this.isFollowed});
+
+  CommonRelationModel.fromJson(Map<String, dynamic> json) {
+    status = json['status'];
+    isFollow = json['is_follow'];
+    isFollowed = json['is_followed'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['status'] = this.status;
+    data['is_follow'] = this.isFollow;
+    data['is_followed'] = this.isFollowed;
+    return data;
+  }
+}
