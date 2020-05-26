@@ -1,6 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_bili/model/channel/channel_region_model.dart';
-import 'package:flutter_bili/model/channel/channel_square_model.dart';
 import 'package:flutter_bili/model/timeline/time_line_data_model.dart';
 import 'package:flutter_bili/service/request.dart';
 

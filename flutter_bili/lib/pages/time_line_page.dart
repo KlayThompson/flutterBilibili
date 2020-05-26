@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bili/model/timeline/time_line_data_model.dart';
 import 'package:flutter_bili/provider/time_line_provider.dart';
 import 'package:flutter_bili/widget/first_loading.dart';
+import 'package:flutter_bili/widget/timeline/timline_cell_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +41,7 @@ class _TimeLinePageState extends State<TimeLinePage> with AutomaticKeepAliveClie
                     return Container(
                       color: Color(0xfff4f4f4),
                       child: ListView(
-                        children: _timelineDataListWidget(),
+                        children: _timelineDataListWidget(provider.timeLineData),
                       ),
                     );
                   }
@@ -52,10 +54,13 @@ class _TimeLinePageState extends State<TimeLinePage> with AutomaticKeepAliveClie
     );
   }
 
-  List<Widget> _timelineDataListWidget() {
-    return [
-      _tipLoginImage()
-    ];
+  List<Widget> _timelineDataListWidget(TimeLineData data) {
+    List<Widget> list = [];
+    list.add(_tipLoginImage());
+    data.data.cards.forEach((model) {
+      list.add(TimeLineCellWidget(model));
+    });
+    return list;
   }
 
   Widget _tipLoginImage() {

@@ -1,14 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bili/pages/index.dart';
-import 'package:flutter_bili/provider/bangumi_provider.dart';
-import 'package:flutter_bili/provider/channel_provider.dart';
-import 'package:flutter_bili/provider/home_common_channel_provider.dart';
-import 'package:flutter_bili/provider/home_common_provider.dart';
-import 'package:flutter_bili/provider/live_provider.dart';
-import 'package:flutter_bili/provider/popular_provider.dart';
-import 'package:flutter_bili/provider/recommend_provider.dart';
-import 'package:flutter_bili/provider/time_line_provider.dart';
+import 'package:flutter_bili/provider/providr_setup.dart';
 import 'package:flutter_bili/routes/routes.dart';
 import 'package:provider/provider.dart';
 
@@ -17,28 +10,10 @@ void main() {
   Routes.configureRoutes(router);
   Routes.router = router;
 
-  var homeCommonProvider = HomeCommonProvider();
-  var liveProvider = LiveProvider();
-  var recommendProvider = RecommendProvider();
-  var popularProvider = PopularProvider();
-  var bangumiProvider = BangumiProvider();
-  var commonChannelModel = HomeCommonChannelProvider();
-  var channelProvider = ChannelProvider();
-  var timeLineProvider = TimeLineProvider();
-  runApp(
-    MultiProvider(providers: [
-      ChangeNotifierProvider.value(value: homeCommonProvider),
-      ChangeNotifierProvider.value(value: liveProvider),
-      ChangeNotifierProvider.value(value: recommendProvider),
-      ChangeNotifierProvider.value(value: popularProvider),
-      ChangeNotifierProvider.value(value: bangumiProvider),
-      ChangeNotifierProvider.value(value: commonChannelModel),
-      ChangeNotifierProvider.value(value: channelProvider),
-      ChangeNotifierProvider.value(value: timeLineProvider)
-    ],
+  runApp(MultiProvider(
+    providers: providers,
     child: MyApp(),
-    )
-  );
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -50,10 +25,9 @@ class MyApp extends StatelessWidget {
       onGenerateRoute: Routes.router.generator,
       theme: ThemeData(
         primarySwatch: Colors.grey,
-        primaryColor:Colors.pink[300],
+        primaryColor: Colors.pink[300],
       ),
       home: IndexPage(),
     );
   }
 }
-
