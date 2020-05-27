@@ -339,7 +339,7 @@ class OfficialVerify {
 }
 
 class VipModel {
-  int vipType;
+  int vipType; // 1 是普通vip 2是年度大会员vip
   int vipDueDate;
   String dueRemark;
   int accessStatus;
