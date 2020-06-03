@@ -1,6 +1,7 @@
 import 'package:flutter_bili/provider/popular_provider.dart';
 import 'package:flutter_bili/provider/recommend_provider.dart';
 import 'package:flutter_bili/provider/time_line_provider.dart';
+import 'package:flutter_bili/provider/vip_store_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
@@ -18,5 +19,7 @@ List<SingleChildStatelessWidget> providers = [
   ChangeNotifierProvider.value(value: BangumiProvider()),
   ChangeNotifierProvider.value(value: HomeCommonChannelProvider()),
   ChangeNotifierProvider.value(value: ChannelProvider()),
-  ChangeNotifierProvider.value(value: TimeLineProvider())
+  ChangeNotifierProvider.value(value: TimeLineProvider()),
+  ChangeNotifierProvider.value(value: VipStoreProvider())
+
 ];
